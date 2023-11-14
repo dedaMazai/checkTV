@@ -1,0 +1,28 @@
+.menu {
+    background: var(--inverted-bg-color);
+    position: absolute;
+    z-index: 10000;
+    top: 45px;
+    flex-direction: column;
+    display: flex;
+}
+
+.menu.gap {
+    top: 55px;
+}
+
+.item {
+    padding: 10px 25px;
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    color: var(--text-main);
+    text-align: left;
+
+    &:hover {
+        background: var(--grey-button-hover);
+        color: var(--text-black);
+    }
+}
