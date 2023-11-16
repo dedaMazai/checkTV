@@ -22,7 +22,7 @@ export const LinkScroll = (props: scrollProps) => {
     const Link = useRef() as MutableRefObject<HTMLAnchorElement>;
 
     const handleClick = (e: MouseEvent) => {
-        console.log(1111111)
+
         e.preventDefault();
 
         document.querySelector(href)?.scrollIntoView({

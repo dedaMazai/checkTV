@@ -1,7 +1,7 @@
-const { i18n } = require('./next-i18next.config.js')
+const { i18n } = require("./next-i18next.config");
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
   i18n,
   rewrites() {
     // встроенные в next редиректы
@@ -11,6 +11,13 @@ const nextConfig = {
         destination: "http://localhost:3000/:path*",
       },
     ];
+  },
+  webpack(config) {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false, // the solution
+    };
+    return config;
   },
 };
 
