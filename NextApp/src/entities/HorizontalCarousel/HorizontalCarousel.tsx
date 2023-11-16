@@ -12,7 +12,7 @@ interface HorizontalCarouselProps {
 }
 
 export const HorizontalCarousel = (props: HorizontalCarouselProps) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('common');
 
     const CONTENT = [
         {

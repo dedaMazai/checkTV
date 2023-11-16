@@ -34,7 +34,7 @@ export const InputDrop = (props: InputDropProps) => {
         disabled,
         isLoading,
     } = props;
-    const { t } = useTranslation();
+    const { t } = useTranslation('common');
     const [drag, setDrag] = useState(false);
 
     const mods: Mods = {
@@ -85,7 +85,7 @@ export const InputDrop = (props: InputDropProps) => {
             <VStack gap="32" align='center' style={{ pointerEvents: 'none' }}>
                 <HStack>
                     <Icon Svg={Logo} className={cls.iconLogo} />
-                    <Typography title={t('chatwiz')} variant="green" bold size='xl' />
+                    <Typography title={t('123')} variant="green" bold size='xl' />
                 </HStack>
                 {
                     isLoading ? (

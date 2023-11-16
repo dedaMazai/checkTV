@@ -1,8 +1,8 @@
 import { HStack } from '@/shared/ui/Stack';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "next-i18next";
 
 export const ForbiddenPage = () => {
-    const { t } = useTranslation('');
+    const { t } = useTranslation('common');
 
     return (
         <HStack max justify="center">

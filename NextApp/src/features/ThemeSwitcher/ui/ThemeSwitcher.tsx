@@ -1,14 +1,13 @@
-import {  useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button } from '@/shared/ui/Button';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "next-i18next";
 
 interface ThemeSwitcherProps {
     className?: string;
 }
 
 export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('common');
 
     // const onToggleHandler = useCallback(() => {
     //     toggleTheme();
@@ -17,7 +16,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
     return (
         <Button
             variant="clearGrey"
-            className={classNames('', {}, [className])}
+            className={classNames(className)}
             // onClick={onToggleHandler}
             fullHeight
         >
