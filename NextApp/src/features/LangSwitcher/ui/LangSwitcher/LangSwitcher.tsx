@@ -1,21 +1,15 @@
 import { Button } from "@/shared/ui/Button";
-import { Trans, useTranslation } from "next-i18next";
-
-interface LangSwitcherProps {
-  className?: string;
-  short?: boolean;
-}
+import { useTranslation } from "next-i18next";
+import Link from "next/link";
 
 export const LangSwitcher = () => {
   const { t, i18n } = useTranslation();
 
-  const toggle = async () => {
-    i18n.changeLanguage(i18n.language === "ru" ? "en" : "ru");
-  };
-
   return (
-    <Button onClick={toggle} fullHeight variant="clearGrey">
-      {t("Язык")}
-    </Button>
+    <Link href="/" locale={i18n.language === "ru" ? "en" : "ru"}>
+      <Button fullHeight variant="clearGrey">
+        {t("Язык")}
+      </Button>
+    </Link>
   );
 };
