@@ -1,4 +1,4 @@
-import { ForwardedRef, HTMLAttributes, memo, MutableRefObject, ReactNode } from 'react';
+import { HTMLAttributes, MutableRefObject, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 import cls from './Card.module.scss';
@@ -31,7 +31,7 @@ const mapPaddingToClass: Record<CardPadding, string> = {
     '54': 'gap_54',
 };
 
-export const Card = (props: CardProps, ref: ForwardedRef<HTMLDivElement | null>) => {
+export const Card = (props: CardProps) => {
     const {
         className,
         children,
@@ -51,7 +51,6 @@ export const Card = (props: CardProps, ref: ForwardedRef<HTMLDivElement | null>)
 
     return (
         <div
-            ref={ref}
             style={{ width, height }}
             className={classNames(
                 cls.Card,

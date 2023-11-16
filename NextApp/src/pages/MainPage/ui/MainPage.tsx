@@ -2,7 +2,6 @@ import { HorizontalCarousel } from '@/entities/HorizontalCarousel';
 import { Card } from '@/shared/ui/Card';
 import {  HStack, VStack } from '@/shared/ui/Stack';
 // import test from '@/shared/assets/img/test.jpg';
-import { Counter } from '@/entities/Counter';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 
@@ -18,7 +17,6 @@ export const MainPage = () => {
                 <LangSwitcher />
                 <ThemeSwitcher />
             </HStack>
-            <Counter />
             <HorizontalCarousel />
         </VStack>
     );

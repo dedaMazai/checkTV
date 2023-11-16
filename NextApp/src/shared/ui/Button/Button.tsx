@@ -1,7 +1,5 @@
 import {
     ButtonHTMLAttributes,
-    ForwardedRef,
-    forwardRef,
     ReactNode,
 } from 'react';
 import { classNames, Mods } from '@/shared/lib/classNames/classNames';
@@ -29,7 +27,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     nowrap?: boolean;
 }
 
-export const Button = (props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
+export const Button = (props: ButtonProps) => {
     const {
         className,
         children,
@@ -69,7 +67,6 @@ export const Button = (props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>)
             ])}
             disabled={disabled}
             {...otherProps}
-            ref={ref}
         >
             {typeof children === 'string' ? (
                 <HStack max justify='center'>{children}</HStack>
