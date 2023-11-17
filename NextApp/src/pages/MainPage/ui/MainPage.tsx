@@ -15,6 +15,7 @@ import { Column, Table } from "@/shared/ui/Table/Table";
 
 import cls from "./MainPage.module.scss";
 import { useEffect, useState } from "react";
+import { redirectToWebsite } from "@/shared/lib/redirectToWebsite/redirectToWebsite";
 
 const Columns: Column[] = [
   {
@@ -101,10 +102,13 @@ export const MainPage = () => {
             <Image src="/images/test.jpg" alt="Landscape picture" className={cls.img} width={200} height={120} />
           </Card>
           <Link href={ROUTES.FORBIDDEN}>
-            <Button fullHeight variant="clearGrey">
+            <Button variant="clearGrey">
               {t("Redirect")}
             </Button>
           </Link>
+          <Button variant="clearGrey" onClick={() => redirectToWebsite('https://www.google.com/')}>
+            {t("Redirect GOOGLE")}
+          </Button>
           {timer}
         </HStack>
         <HStack gap="8">
