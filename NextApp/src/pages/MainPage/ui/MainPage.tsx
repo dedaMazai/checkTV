@@ -45,27 +45,27 @@ const Columns: Column[] = [
 
 const DATA = [
   {
-    internal_id: 'string',
-    address: 'string',
+    internal_id: "string",
+    address: "string",
     amount: 42,
     balance_after: 42,
     balance_before: 42,
   },
   {
-    internal_id: 'stri123ng',
-    address: 'stri321ng',
+    internal_id: "stri123ng",
+    address: "stri321ng",
     amount: 432,
     balance_after: 423,
     balance_before: 432,
   },
   {
-    internal_id: 'str51ing',
-    address: 'strin56g',
+    internal_id: "str51ing",
+    address: "strin56g",
     amount: 426,
     balance_after: 426,
     balance_before: 426,
   },
-]
+];
 export const MainPage = () => {
   const { t } = useTranslation();
   const router = useRouter();
@@ -90,7 +90,7 @@ export const MainPage = () => {
           <iframe
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/vrjPzp-bZJo?si=aKBrrw-6Lgx-76WE"
+            src="https://www.youtube.com/embed/Sup_UlTK1-A?si=KNVPt_UorvdbJhy-"
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -101,12 +101,7 @@ export const MainPage = () => {
           <LangSwitcher />
           <ThemeSwitcher />
         </HStack>
-        <Table
-          columns={Columns}
-          rows={DATA}
-          noData={t("No data")}
-          zebra
-        />
+        <Table columns={Columns} rows={DATA} noData={t("No data")} zebra />
         <HorizontalCarousel />
       </VStack>
     </SwrProvider>
