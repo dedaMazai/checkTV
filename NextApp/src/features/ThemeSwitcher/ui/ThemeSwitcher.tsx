@@ -18,6 +18,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
   const [key, setKey] = useState('');
 
   const onToggleHandler = useCallback(() => {
+    setKey('click')
     setTheme(theme === "light" ? "dark" : "light");
   }, [setTheme, theme]);
 
@@ -62,7 +63,6 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
     // </Button>
     <button ref={refButton} onClick={onToggleHandler}>
       {`${t("qqq")}-${key}`}
-
     </button>
   );
 };

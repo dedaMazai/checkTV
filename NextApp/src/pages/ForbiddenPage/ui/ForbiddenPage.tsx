@@ -4,6 +4,7 @@ import { ROUTES } from '@/shared/const/routes';
 import { Button } from '@/shared/ui/Button';
 import { VStack } from '@/shared/ui/Stack';
 import { useTranslation } from "next-i18next";
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 export const ForbiddenPage = () => {
@@ -15,9 +16,11 @@ export const ForbiddenPage = () => {
         <SwrProvider>
             <VStack max justify="center">
                 {JSON.stringify(user?.data)}
-                <Button variant="clearGrey" onClick={() => router.push(ROUTES.HOME)}>
+                <Link href={ROUTES.HOME}>
+                    <Button fullHeight variant="clearGrey">
                     {t("Redirect HOME")}
-                </Button>
+                    </Button>
+                </Link>
             </VStack>
         </SwrProvider>
     );
