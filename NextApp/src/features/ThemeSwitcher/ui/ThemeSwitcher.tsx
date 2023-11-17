@@ -76,7 +76,7 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
       onMouseEnter={onToggleHandler}
       onMouseLeave={onToggleHandler}
     >
-      Click
+      Clickkk
     </a>
     // <button ref={refButton} onClick={onToggleHandler}>
     //   {`${t("qqq")}`}
