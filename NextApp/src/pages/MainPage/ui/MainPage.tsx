@@ -76,8 +76,9 @@ export const MainPage = () => {
   const [timer, setTimer] = useState(0);
   const [result, setResult] = useState("");
 
+  const add = () => setTimer((prev) => ++prev)
   useEffect(() => {
-    const timerId = setInterval(() => setTimer((prev) => ++prev), 1000);
+    const timerId = setInterval(add, 1000);
     return () => {
       clearInterval(timerId);
     };
@@ -109,6 +110,7 @@ export const MainPage = () => {
           <Button variant="clearGrey" onClick={() => window.open('https://www.google.com/','_blank')}>
             {t("Redirect GOOGLE")}
           </Button>
+          {`${typeof add === 'function'}`}
           {timer}
         </HStack>
         <HStack gap="8">
