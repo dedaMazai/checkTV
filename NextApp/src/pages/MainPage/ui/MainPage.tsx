@@ -106,7 +106,7 @@ export const MainPage = () => {
               {t("Redirect")}
             </Button>
           </Link>
-          <Button variant="clearGrey" onClick={() => redirectToWebsite('https://www.google.com/')}>
+          <Button variant="clearGrey" onClick={() => window.open('https://www.google.com/','_blank')}>
             {t("Redirect GOOGLE")}
           </Button>
           {timer}
