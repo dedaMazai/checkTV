@@ -15,12 +15,14 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
   const refButton = useRef<HTMLButtonElement>(null);
 
   const [isMouseOnButton, setIsMouseOnButton] = useState(false);
+  const [key, setKey] = useState('');
 
   const onToggleHandler = useCallback(() => {
     setTheme(theme === "light" ? "dark" : "light");
   }, [setTheme, theme]);
 
   const onKeyDown = useCallback((e: KeyboardEvent) => {
+    setKey(e.key)
     if (e.key === "Enter" && isMouseOnButton) {
       refButton.current?.click();
     }
@@ -59,7 +61,8 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
     //   {t("qqq")}
     // </Button>
     <button ref={refButton} onClick={onToggleHandler}>
-      {t("qqq")}
+      {`${t("qqq")}-${key}`}
+
     </button>
   );
 };
