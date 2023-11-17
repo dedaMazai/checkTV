@@ -57,8 +57,15 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
     // >
     //   {t("qqq")}
     // </Button>
-    <button ref={refButton} onClick={onToggleHandler} onTouchStart={onToggleHandler}>
-      {`${t("qqq")}`}
-    </button>
+    <a
+      href="javascript:;"
+      onMouseUp={onToggleHandler.bind(this)}
+      onTouchEnd={onToggleHandler.bind(this)}
+    >
+      Click
+    </a>
+    // <button ref={refButton} onClick={onToggleHandler}>
+    //   {`${t("qqq")}`}
+    // </button>
   );
 };
