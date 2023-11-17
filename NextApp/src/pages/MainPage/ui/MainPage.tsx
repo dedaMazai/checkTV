@@ -14,6 +14,7 @@ import Link from "next/link";
 import { Column, Table } from "@/shared/ui/Table/Table";
 
 import cls from "./MainPage.module.scss";
+import { useEffect, useState } from "react";
 
 const Columns: Column[] = [
   {
@@ -71,10 +72,30 @@ export const MainPage = () => {
   const router = useRouter();
   const { user, mutate, error } = useUser();
 
+  const [timer, setTimer] = useState(0);
+  const [result, setResult] = useState("");
+
+  useEffect(() => {
+    const timerId = setInterval(() => setTimer((prev) => ++prev), 1000);
+    return () => {
+      clearInterval(timerId);
+    };
+  }, []);
+
+  // const Http = new XMLHttpRequest();
+  // const url = "https://fakerapi.it/api/v1/books?_quantity=2";
+  // Http.open("GET", url);
+  // Http.send();
+
+  // Http.onreadystatechange = (e) => {
+  //   setResult(JSON.stringify(Http.responseText));
+  //   console.log(Http.responseText); // => получим массив данных в формате JSON
+  // };
+
   return (
     <SwrProvider>
       <VStack gap="16" max align="center">
-        {JSON.stringify(user?.data)}
+        {result}
         <HStack gap="8">
           <Card variant="greyOne" border="round" className={cls.imgCard}>
             <Image src="/images/test.jpg" alt="Landscape picture" className={cls.img} width={200} height={120} />
@@ -84,6 +105,7 @@ export const MainPage = () => {
               {t("Redirect")}
             </Button>
           </Link>
+          {timer}
         </HStack>
         <HStack gap="8">
           <video controls src="/video/example.mp4" style={{ width: "400px", height: "250px" }} />
