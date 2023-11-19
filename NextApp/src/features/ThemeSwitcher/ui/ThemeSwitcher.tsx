@@ -57,29 +57,29 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
     // >
     //   {t("qqq")}
     // </Button>
-    <a
-      href="javascript:;"
-      onMouseUp={onToggleHandler.bind(this)}
-      onTouchEnd={onToggleHandler.bind(this)}
-      onClick={onToggleHandler}
-      onContextMenu={onToggleHandler}
-      onDoubleClick={onToggleHandler}
-      onDrag={onToggleHandler}
-      onDragEnd={onToggleHandler}
-      onDragEnter={onToggleHandler}
-      onDragExit={onToggleHandler}
-      onDragLeave={onToggleHandler}
-      onDragOver={onToggleHandler}
-      onDragStart={onToggleHandler}
-      onDrop={onToggleHandler}
-      onMouseDown={onToggleHandler}
-      onMouseEnter={onToggleHandler}
-      onMouseLeave={onToggleHandler}
-    >
-      Clickkk
-    </a>
-    // <button ref={refButton} onClick={onToggleHandler}>
-    //   {`${t("qqq")}`}
-    // </button>
+    // <a
+    //   href="javascript:;"
+    //   onMouseUp={onToggleHandler.bind(this)}
+    //   onTouchEnd={onToggleHandler.bind(this)}
+    //   onClick={onToggleHandler}
+    //   onContextMenu={onToggleHandler}
+    //   onDoubleClick={onToggleHandler}
+    //   onDrag={onToggleHandler}
+    //   onDragEnd={onToggleHandler}
+    //   onDragEnter={onToggleHandler}
+    //   onDragExit={onToggleHandler}
+    //   onDragLeave={onToggleHandler}
+    //   onDragOver={onToggleHandler}
+    //   onDragStart={onToggleHandler}
+    //   onDrop={onToggleHandler}
+    //   onMouseDown={onToggleHandler}
+    //   onMouseEnter={onToggleHandler}
+    //   onMouseLeave={onToggleHandler}
+    // >
+    //   Clickkk
+    // </a>
+    <button ref={refButton} onClick={onToggleHandler}>
+      {`${t("qqq")}`}
+    </button>
   );
 };
