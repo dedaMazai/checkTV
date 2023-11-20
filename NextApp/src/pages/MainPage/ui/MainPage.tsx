@@ -1,4 +1,5 @@
 import { HorizontalCarousel } from "@/entities/HorizontalCarousel";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { HStack, VStack } from "@/shared/ui/Stack";
 import { LangSwitcher } from "@/features/LangSwitcher";
@@ -14,8 +15,6 @@ import Link from "next/link";
 import { Column, Table } from "@/shared/ui/Table/Table";
 
 import cls from "./MainPage.module.scss";
-import { useEffect, useState } from "react";
-import { redirectToWebsite } from "@/shared/lib/redirectToWebsite/redirectToWebsite";
 
 const Columns: Column[] = [
   {
@@ -76,8 +75,12 @@ export const MainPage = () => {
   const [timer, setTimer] = useState(0);
   const [result, setResult] = useState("");
 
-  const add = () => setTimer((prev) => ++prev)
-  useEffect(() => {
+  const add = function() {
+    setTimer(function(prev) {
+      return ++prev
+    })
+  }
+  useEffect(function() {
     const timerId = setInterval(add, 1000);
 
     const Http = new XMLHttpRequest();
@@ -85,12 +88,11 @@ export const MainPage = () => {
     Http.open("GET", url);
     Http.send();
 
-    Http.onreadystatechange = (e) => {
+    Http.onreadystatechange = function(e) {
       setResult(JSON.stringify(Http.responseText));
-      console.log(Http.responseText); // => получим массив данных в формате JSON
     };
 
-    return () => {
+    return function () {
       clearInterval(timerId);
     };
   }, []);
@@ -112,8 +114,7 @@ export const MainPage = () => {
           <Button variant="clearGrey" onClick={() => window.open('https://www.google.com/','_blank')}>
             {t("Redirect GOOGLE")}
           </Button>
-          {`${typeof add === 'function'}`}
-          {timer}
+          {'new:' + timer}
         </HStack>
         <HStack gap="8">
           <video controls src="/video/example.mp4" style={{ width: "400px", height: "250px" }} />

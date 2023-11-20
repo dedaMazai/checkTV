@@ -30,9 +30,7 @@
     "i18next-resources-for-ts": "^1.4.0",
     "typescript": "^5"
   },
-  "browserslist": {
-    "production": [
-      ">0%"
-    ]
-  }
+  "browserslist": [
+    ">0.1%, defaults, supports es5"
+  ]
 }
