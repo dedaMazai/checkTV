@@ -79,20 +79,21 @@ export const MainPage = () => {
   const add = () => setTimer((prev) => ++prev)
   useEffect(() => {
     const timerId = setInterval(add, 1000);
+
+    const Http = new XMLHttpRequest();
+    const url = "https://fakerapi.it/api/v1/books?_quantity=2";
+    Http.open("GET", url);
+    Http.send();
+
+    Http.onreadystatechange = (e) => {
+      setResult(JSON.stringify(Http.responseText));
+      console.log(Http.responseText); // => получим массив данных в формате JSON
+    };
+
     return () => {
       clearInterval(timerId);
     };
   }, []);
-
-  // const Http = new XMLHttpRequest();
-  // const url = "https://fakerapi.it/api/v1/books?_quantity=2";
-  // Http.open("GET", url);
-  // Http.send();
-
-  // Http.onreadystatechange = (e) => {
-  //   setResult(JSON.stringify(Http.responseText));
-  //   console.log(Http.responseText); // => получим массив данных в формате JSON
-  // };
 
   return (
     <SwrProvider>
