@@ -92,7 +92,7 @@ export const MainPage = () => {
       setResult(JSON.stringify(Http.responseText));
     };
 
-    return function () { 
+    return function () {
       clearInterval(timerId);
     };
   }, []);
@@ -111,7 +111,7 @@ export const MainPage = () => {
               {t("Redirect")}
             </Button>
           </Link>
-          <Button variant="clearGrey" onClick={() => window.open('https://www.google.com/','_blank')}>
+          <Button variant="clearGrey" onClick={function() {window.open('https://www.google.com/','_blank')}}>
             {t("Redirect GOOGLE")}
           </Button>
           {'new2:' + timer}

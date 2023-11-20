@@ -4,6 +4,7 @@ import { Button } from "@/shared/ui/Button";
 import { useTranslation } from "next-i18next";
 import { useTheme } from "next-themes";
 import { useCallback } from "react";
+import { HStack } from "@/shared/ui/Stack";
 
 interface ThemeSwitcherProps {
   className?: string;
@@ -17,10 +18,10 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
   // const [isMouseOnButton, setIsMouseOnButton] = useState(false);
   // const [key, setKey] = useState('');
 
-  const onToggleHandler = useCallback(() => {
+  const onToggleHandler = function() {
     // setKey('click')
     setTheme(theme === "light" ? "dark" : "light");
-  }, [setTheme, theme]);
+  };
 
   // const onKeyDown = useCallback((e: KeyboardEvent) => {
   //   setKey(e.key)
@@ -57,29 +58,16 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
     // >
     //   {t("qqq")}
     // </Button>
-    // <a
-    //   href="javascript:;"
-    //   onMouseUp={onToggleHandler.bind(this)}
-    //   onTouchEnd={onToggleHandler.bind(this)}
-    //   onClick={onToggleHandler}
-    //   onContextMenu={onToggleHandler}
-    //   onDoubleClick={onToggleHandler}
-    //   onDrag={onToggleHandler}
-    //   onDragEnd={onToggleHandler}
-    //   onDragEnter={onToggleHandler}
-    //   onDragExit={onToggleHandler}
-    //   onDragLeave={onToggleHandler}
-    //   onDragOver={onToggleHandler}
-    //   onDragStart={onToggleHandler}
-    //   onDrop={onToggleHandler}
-    //   onMouseDown={onToggleHandler}
-    //   onMouseEnter={onToggleHandler}
-    //   onMouseLeave={onToggleHandler}
-    // >
-    //   Clickkk
-    // </a>
-    <button ref={refButton} onClick={onToggleHandler}>
-      {`${t("qqq")}`}
-    </button>
+    <HStack gap="16">
+      <a
+        href="javascript:;"
+        onClick={onToggleHandler}
+      >
+        Clickkk
+      </a>
+      <button ref={refButton} onClick={onToggleHandler}>
+        {`${t("Click")}`}
+      </button>
+    </HStack>
   );
 };
