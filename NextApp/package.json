@@ -34,6 +34,6 @@
     "typescript": "^5"
   },
   "browserslist": [
-    ">0.1%, supports es5"
+    ">0.1%, defaults, supports es5"
   ]
 }
