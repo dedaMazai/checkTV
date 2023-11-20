@@ -114,7 +114,7 @@ export const MainPage = () => {
           <Button variant="clearGrey" onClick={() => window.open('https://www.google.com/','_blank')}>
             {t("Redirect GOOGLE")}
           </Button>
-          {'new:' + timer}
+          {'new2:' + timer}
         </HStack>
         <HStack gap="8">
           <video controls src="/video/example.mp4" style={{ width: "400px", height: "250px" }} />
