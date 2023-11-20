@@ -7,8 +7,8 @@ export default function Document(props: DocumentProps) {
     <Html lang={i18nextConfig.i18n.defaultLocale}>
       <Head />
       <body>
-        <NextScript />
         <Main />
+        <NextScript />
       </body>
     </Html>
   )

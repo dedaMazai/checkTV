@@ -10,20 +10,20 @@ interface ThemeSwitcherProps {
   className?: string;
 }
 
-export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
-  const { t } = useTranslation("common");
-  const { theme, setTheme } = useTheme();
-  const refButton = useRef<HTMLButtonElement>(null);
+export var ThemeSwitcher = function({ className }: ThemeSwitcherProps) {
+  var { t } = useTranslation("common");
+  var { theme, setTheme } = useTheme();
+  var refButton = useRef<HTMLButtonElement>(null);
 
-  // const [isMouseOnButton, setIsMouseOnButton] = useState(false);
-  // const [key, setKey] = useState('');
+  // var [isMouseOnButton, setIsMouseOnButton] = useState(false);
+  // var [key, setKey] = useState('');
 
-  const onToggleHandler = function() {
+  var onToggleHandler = function() {
     // setKey('click')
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  // const onKeyDown = useCallback((e: KeyboardEvent) => {
+  // var onKeyDown = useCallback((e: KeyboardEvent) => {
   //   setKey(e.key)
   //   if (e.key === "Enter" && isMouseOnButton) {
   //     refButton.current?.click();
@@ -58,16 +58,16 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
     // >
     //   {t("qqq")}
     // </Button>
-    <HStack gap="16">
-      {/* <a
-        href="javascript:;"
-        onClick={onToggleHandler}
-      >
-        Clickkk
-      </a> */}
+    // <HStack gap="16">
+      // <a
+      //   href="javascript:;"
+      //   onClick={onToggleHandler}
+      // >
+      //   Clickkk
+      // </a>
       <button ref={refButton} onClick={onToggleHandler}>
-        {`${t("Click")}`}
+        Click
       </button>
-    </HStack>
+    // </HStack>
   );
 };
