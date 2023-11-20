@@ -59,12 +59,12 @@ export const ThemeSwitcher = ({ className }: ThemeSwitcherProps) => {
     //   {t("qqq")}
     // </Button>
     <HStack gap="16">
-      <a
+      {/* <a
         href="javascript:;"
         onClick={onToggleHandler}
       >
         Clickkk
-      </a>
+      </a> */}
       <button ref={refButton} onClick={onToggleHandler}>
         {`${t("Click")}`}
       </button>
