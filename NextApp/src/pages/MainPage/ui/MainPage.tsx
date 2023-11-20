@@ -92,7 +92,7 @@ export const MainPage = () => {
       setResult(JSON.stringify(Http.responseText));
     };
 
-    return function () {
+    return function () { 
       clearInterval(timerId);
     };
   }, []);
