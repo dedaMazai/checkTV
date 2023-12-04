@@ -1,5 +1,5 @@
 import { HorizontalCarousel } from "@/entities/HorizontalCarousel";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, } from "react";
 import Clock from "react-clock";
 import Image from "next/image";
 import { HStack, VStack } from "@/shared/ui/Stack";
@@ -9,7 +9,6 @@ import { Card } from "@/shared/ui/Card";
 import { Button } from "@/shared/ui/Button";
 import { useTranslation } from "next-i18next";
 import { ROUTES } from "@/shared/const/routes";
-import useUser from "@/entities/User/user";
 import { SwrProvider } from "@/app/providers/SwrProvider/SwrProvider";
 import Link from "next/link";
 import { Column, Table } from "@/shared/ui/Table/Table";
@@ -17,16 +16,33 @@ import { Column, Table } from "@/shared/ui/Table/Table";
 import cls from "./MainPage.module.scss";
 import 'react-clock/dist/Clock.css';
 
+function useState(defaultValue: any) {
+  var value = defaultValue
+
+  function getValue() {
+    return value
+  }
+
+  function setValue(newValue: any) {
+    console.log(value)
+    value = newValue + value
+  }
+
+  return [getValue(), setValue] as const;
+}
+
 export const MainPage = (props: any) => {
   const { t } = useTranslation();
 
-  const [timer, setTimer] = useState(0);
+  var [timer, setTimer] = useState(0);
 
   const add = function () {
-    setTimer(function (prev) {
-      return ++prev;
-    });
+    setTimer(1);
   };
+
+  useEffect(function () {
+    console.log(111111111)
+  }, [timer]);
 
   useEffect(function () {
     const timerId = setInterval(add, 1000);
