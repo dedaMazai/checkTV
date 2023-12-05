@@ -85,7 +85,7 @@ export const InputDrop = (props: InputDropProps) => {
             <VStack gap="32" align='center' style={{ pointerEvents: 'none' }}>
                 <HStack>
                     <Icon Svg={Logo} className={cls.iconLogo} />
-                    <Typography title={t('123')} variant="green" bold size='xl' />
+                    <Typography title={t('123')} variant="green" bold size={2} />
                 </HStack>
                 {
                     isLoading ? (

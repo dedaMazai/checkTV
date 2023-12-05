@@ -107,7 +107,7 @@ export const Input = (props: InputProps) => {
             <VStack max gap="2" className={className}>
                 <Typography text={label} />
                 {input}
-                <Typography size="s" variant="gray" text={validationText} />
+                <Typography size={5} variant="gray" text={validationText} />
             </VStack>
         );
     }

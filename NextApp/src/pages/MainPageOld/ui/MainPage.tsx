@@ -31,63 +31,62 @@ function useState(defaultValue: any) {
 }
 
 export const MainPage = (props: any) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
-  var [timer, setTimer] = useState(0);
+  // var [timer, setTimer] = useState(0);
 
-  const add = function () {
-    setTimer(1);
-  };
+  // const add = function () {
+  //   setTimer(1);
+  // };
 
-  useEffect(function () {
-    const timerId = setInterval(add, 1000);
+  // useEffect(function () {
+  //   const timerId = setInterval(add, 1000);
 
-    return function () {
-      clearInterval(timerId);
-    };
-  }, []);
+  //   return function () {
+  //     clearInterval(timerId);
+  //   };
+  // }, []);
 
-  const renderImage = function (row: any) {
-    return (
-      <HStack max justify="center">
-        <img src={row.image} alt={row.image} className={cls.img} width={150} height={120} />
-      </HStack>
-    );
-  };
+  // const renderImage = function (row: any) {
+  //   return (
+  //     <HStack max justify="center">
+  //       <img src={row.image} alt={row.image} className={cls.img} width={150} height={120} />
+  //     </HStack>
+  //   );
+  // };
 
-  const Columns: Column[] = [
-    {
-      key: "title",
-      name: "Title",
-      width: "120px",
-    },
-    {
-      key: "author",
-      name: "Author",
-      width: "220px",
-    },
-    {
-      key: "genre",
-      name: "Genre",
-      width: "150px",
-    },
-    {
-      key: "image",
-      name: "Image",
-      width: "125px",
-      render: renderImage,
-    },
-    {
-      key: "published",
-      name: "Published",
-      width: "150px",
-    },
-  ];
+  // const Columns: Column[] = [
+  //   {
+  //     key: "title",
+  //     name: "Title",
+  //     width: "120px",
+  //   },
+  //   {
+  //     key: "author",
+  //     name: "Author",
+  //     width: "220px",
+  //   },
+  //   {
+  //     key: "genre",
+  //     name: "Genre",
+  //     width: "150px",
+  //   },
+  //   {
+  //     key: "image",
+  //     name: "Image",
+  //     width: "125px",
+  //     render: renderImage,
+  //   },
+  //   {
+  //     key: "published",
+  //     name: "Published",
+  //     width: "150px",
+  //   },
+  // ];
 
   return (
     <SwrProvider>
-      <VStack gap="16" max align="center" key={timer}>
-        {/* <iframe src="http://localhost:3001/" height="1500px" width="1500px"/> */}
+      {/* <VStack gap="16" max align="center" key={timer}>
         {JSON.stringify(props.user)}
         <Clock value={new Date()} />
         <HStack gap="8">
@@ -124,7 +123,7 @@ export const MainPage = (props: any) => {
         </HStack>
         <Table columns={Columns} rows={props.user} noData={t("No data")} />
         <HorizontalCarousel />
-      </VStack>
+      </VStack> */}
     </SwrProvider>
   );
 };
