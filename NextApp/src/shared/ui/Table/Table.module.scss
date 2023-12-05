@@ -17,20 +17,12 @@
 }
 
 .table {
-  display: table;
   border: 1px solid;
   border-bottom: none;
   width: max-content;
-
-  @media screen and (max-width: 700px) {
-    display: block;
-  }
 }
 
 .row {
-  // width: 100%;
-  display: table-row;
-
   &.evenRow {
     background: var(--bg-color);
   }
@@ -41,50 +33,6 @@
 
   &.header {
     font-weight: bold;
-  }
-
-  @media screen and (max-width: 700px) {
-    padding: 14px 0 7px;
-    display: block;
-    border: 1px solid;
-
-    .cell {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      width: max-content;
-
-      &::before {
-        margin-bottom: 3px;
-        content: attr(data-title);
-        min-width: 98px;
-        font-size: 12px;
-        line-height: 14px;
-        font-weight: bold;
-        text-transform: uppercase;
-        color: var(--primary-color);
-        display: flex;
-      }
-    }
-
-    &.header {
-      padding: 0;
-      height: 6px;
-      font-weight: bold;
-
-      .cell {
-        display: none;
-      }
-    }
-
-    &.evenRow {
-      background: transparent;
-    }
-
-    &.notEvenRow {
-      background: transparent;
-    }
   }
 }
 
@@ -105,18 +53,11 @@
 
 .cell {
   padding: 6px 12px;
-  display: table-cell;
   text-align: center;
   border-right: 1px solid;
   border-bottom: 1px solid;
   user-select: none;
   cursor: pointer;
-
-  @media screen and (max-width: 700px) {
-    padding: 2px 16px;
-    display: block;
-    width: 100% !important;
-  }
 }
 
 .empty {
@@ -125,8 +66,4 @@
 
 .dynamicCell {
   width: 100%;
-
-  @media screen and (max-width: 700px) {
-    width: max-content;
-  }
 }
