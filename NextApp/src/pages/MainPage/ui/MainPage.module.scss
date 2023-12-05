@@ -6,3 +6,34 @@
 .imgCard {
     padding: 20px;
 }
+
+.clock {
+    width: inherit;
+    height: inherit;
+}
+
+.RenderBlock {
+    width: inherit;
+    height: inherit;
+}
+
+.RenderBlockViewer {
+    width: max-content;
+    height: max-content;
+    position: absolute;
+}
+
+.ScreenBlockWrapper {
+    width: 100%;
+    min-height: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ScreenBlock {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+}

@@ -15,7 +15,6 @@ import { Column, Table } from "@/shared/ui/Table/Table";
 
 import cls from "./MainPage.module.scss";
 import 'react-clock/dist/Clock.css';
-import { Viewer } from "./Viewer";
 
 function useState(defaultValue: any) {
   var value = defaultValue
@@ -48,47 +47,47 @@ export const MainPage = (props: any) => {
     };
   }, []);
 
-  // const renderImage = function (row: any) {
-  //   return (
-  //     <HStack max justify="center">
-  //       <img src={row.image} alt={row.image} className={cls.img} width={150} height={120} />
-  //     </HStack>
-  //   );
-  // };
+  const renderImage = function (row: any) {
+    return (
+      <HStack max justify="center">
+        <img src={row.image} alt={row.image} className={cls.img} width={150} height={120} />
+      </HStack>
+    );
+  };
 
-  // const Columns: Column[] = [
-  //   {
-  //     key: "title",
-  //     name: "Title",
-  //     width: "120px",
-  //   },
-  //   {
-  //     key: "author",
-  //     name: "Author",
-  //     width: "220px",
-  //   },
-  //   {
-  //     key: "genre",
-  //     name: "Genre",
-  //     width: "150px",
-  //   },
-  //   {
-  //     key: "image",
-  //     name: "Image",
-  //     width: "125px",
-  //     render: renderImage,
-  //   },
-  //   {
-  //     key: "published",
-  //     name: "Published",
-  //     width: "150px",
-  //   },
-  // ];
+  const Columns: Column[] = [
+    {
+      key: "title",
+      name: "Title",
+      width: "120px",
+    },
+    {
+      key: "author",
+      name: "Author",
+      width: "220px",
+    },
+    {
+      key: "genre",
+      name: "Genre",
+      width: "150px",
+    },
+    {
+      key: "image",
+      name: "Image",
+      width: "125px",
+      render: renderImage,
+    },
+    {
+      key: "published",
+      name: "Published",
+      width: "150px",
+    },
+  ];
 
   return (
     <SwrProvider>
-      <Viewer />
-      {/* <VStack gap="16" max align="center" key={timer}>
+      <VStack gap="16" max align="center" key={timer}>
+        {/* <iframe src="http://localhost:3001/" height="1500px" width="1500px"/> */}
         {JSON.stringify(props.user)}
         <Clock value={new Date()} />
         <HStack gap="8">
@@ -125,7 +124,7 @@ export const MainPage = (props: any) => {
         </HStack>
         <Table columns={Columns} rows={props.user} noData={t("No data")} />
         <HorizontalCarousel />
-      </VStack> */}
+      </VStack>
     </SwrProvider>
   );
 };

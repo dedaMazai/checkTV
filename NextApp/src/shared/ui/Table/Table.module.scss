@@ -1,4 +1,3 @@
-/* stylelint-disable max-line-length */
 .skeleton {
   padding: 1rem 0.5rem;
   width: 100%;
@@ -18,8 +17,10 @@
 }
 
 .table {
-  // width: 100%;
   display: table;
+  border: 1px solid;
+  border-bottom: none;
+  width: max-content;
 
   @media screen and (max-width: 700px) {
     display: block;
@@ -27,18 +28,8 @@
 }
 
 .row {
-  // display: table-row;
-  padding: 1rem 0;
-  border-bottom: 1px solid;
-  border-image-source: linear-gradient(
-    90deg,
-    var(--border) 0%,
-    var(--green-button) 6%,
-    var(--green-button) 94%,
-    var(--border) 100%
-  );
-  border-image-slice: 1;
-  width: 100%;
+  // width: 100%;
+  display: table-row;
 
   &.evenRow {
     background: var(--bg-color);
@@ -55,15 +46,7 @@
   @media screen and (max-width: 700px) {
     padding: 14px 0 7px;
     display: block;
-    border-bottom: 1px solid;
-    border-image-source: linear-gradient(
-      90deg,
-      var(--border) 0%,
-      var(--green-button) 6%,
-      var(--green-button) 94%,
-      var(--border) 100%
-    );
-    border-image-slice: 1;
+    border: 1px solid;
 
     .cell {
       display: flex;
@@ -80,7 +63,7 @@
         line-height: 14px;
         font-weight: bold;
         text-transform: uppercase;
-        color: var(--border-active);
+        color: var(--primary-color);
         display: flex;
       }
     }
@@ -105,17 +88,12 @@
   }
 }
 
-// .row.zebra {
-//     @media screen and (max-width: 700px) {
-//         border: none;
-
-//         &.header {
-//             display: none;
-//         }
-//     }
-// }
+.row.rowLast {
+  border-bottom: 1px solid;
+}
 
 .cell.isLast {
+  border-right: none;
   &.body {
     border-right: none;
   }
@@ -129,6 +107,10 @@
   padding: 6px 12px;
   display: table-cell;
   text-align: center;
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+  user-select: none;
+  cursor: pointer;
 
   @media screen and (max-width: 700px) {
     padding: 2px 16px;

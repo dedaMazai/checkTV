@@ -1,21 +1,28 @@
-import { ReactNode } from "react";
-import { useTranslation } from "react-i18next";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { Skeleton } from "../Skeleton/Skeleton";
-import { HStack, VStack } from "../Stack";
-import { Typography } from "../Text";
+/* eslint-disable no-use-before-define */
+import { ReactNode, useCallback, useEffect, useRef } from "react";
 
 import cls from "./Table.module.scss";
+import { Skeleton } from "../Skeleton";
+import { HStack, VStack } from "../Stack";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { Typography } from "../Text";
 
 export interface Column {
   key: string;
   name: string;
-  render?: (value: any) => ReactNode;
+  isImg?: boolean;
+  // render?: (value: any) => ReactNode;
   renderHeader?: (name: string) => string;
   width?: string | number;
 }
 
-interface Row extends Record<string, string | number | boolean | any> {
+export interface Cell {
+  value: string | number;
+  isImg: boolean;
+  render?: (value: Row) => ReactNode;
+}
+
+export interface Row extends Record<string, string | number | boolean | any | Cell> {
   internal_id?: number | string;
 }
 
@@ -26,57 +33,102 @@ interface TableProps {
   isLoading?: boolean;
   zebra?: boolean;
   noData?: string;
+  onChangeCell?: (col: string, row?: string) => void;
 }
 
 export const Table = (props: TableProps) => {
-  const { className, columns, rows, isLoading, noData, zebra } = props;
+  const { className, columns, rows, isLoading, noData, zebra, onChangeCell } = props;
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  const changeActiveCell = useCallback(
+    (e: MouseEvent) => {
+      const data = (e.target as HTMLDivElement).dataset;
+      const dataParent = (e.target as HTMLDivElement).parentElement?.dataset;
+      if (data.col) {
+        onChangeCell?.(data.col, data.row);
+      } else if (dataParent?.col) {
+        onChangeCell?.(dataParent.col, dataParent.row);
+      }
+    },
+    [onChangeCell]
+  );
+
+  useEffect(() => {
+    const block = ref.current;
+    if (!block) {
+      return undefined;
+    }
+    block.addEventListener("dblclick", changeActiveCell);
+
+    return () => {
+      block.removeEventListener("dblclick", changeActiveCell);
+    };
+  }, [changeActiveCell]);
 
   if (isLoading) {
     return (
       <div className={cls.skeleton}>
-        <Skeleton width="100%" border="8px" height="50px" />
+        <Skeleton />
       </div>
     );
   }
 
   return (
     <VStack className={classNames("", {}, [className])}>
-      <div className={classNames(cls.table)}>
-        <div className={classNames(cls.row, { [cls.zebra]: zebra }, [cls.header])}>
-          {columns?.map((el, index) => (
-            <div
-              key={index}
-              style={{ width: el.width ? el.width : "" }}
-              className={classNames(cls.cell, {
-                [cls.widthStart]: !el.width,
-                [cls.isLast]: ++index === columns.length,
-              })}
-            >
-              {el.renderHeader ? el.renderHeader(el.name) : el.name}
-            </div>
-          ))}
-        </div>
+      <div className={classNames(cls.table)} ref={ref}>
+        {/* <div
+                  className={classNames(cls.row, { [cls.zebra]: zebra }, [
+                      cls.header,
+                  ])}
+              >
+                  {columns?.map((el, index) => (
+                      <div
+                          key={index}
+                          style={{
+                              width: '100%',
+                              minWidth: el.width ? el.width : '',
+                          }}
+                          className={classNames(cls.cell, {
+                              [cls.widthStart]: !el.width,
+                              [cls.isLast]: (index + 1) === columns.length,
+                          })}
+                          data-col={index}
+                      >
+                          {el.renderHeader
+                              ? el.renderHeader(el.name)
+                              : el.name}
+                      </div>
+                  ))}
+              </div> */}
         {!!rows?.length &&
-          rows.map((row, index) => (
+          rows.map((row, rowIndex) => (
             <div
-              key={`${index}${row.internal_id}`}
+              key={`${rowIndex}${row.internal_id}`}
               className={classNames(cls.row, {
-                [cls.notEvenRow]: index % 2 !== 0 && zebra,
-                [cls.evenRow]: index % 2 === 0 && zebra,
+                [cls.notEvenRow]: rowIndex % 2 !== 0 && zebra,
+                [cls.evenRow]: rowIndex % 2 === 0 && zebra,
                 [cls.zebra]: zebra,
+                [cls.rowLast]: rowIndex + 1 === rows.length,
               })}
             >
-              {columns?.map((el, index) => (
+              {columns?.map((col, colIndex) => (
                 <div
-                  key={index}
-                  data-title={el.renderHeader ? el.renderHeader(el.name) : el.name}
-                  style={{ width: el.width ? el.width : "" }}
+                  key={colIndex}
+                  data-title={col.renderHeader ? col.renderHeader(col.name) : col.name}
+                  style={{
+                    width: "100%",
+                    minWidth: col.width ? col.width : "",
+                  }}
                   className={classNames(cls.cell, {
-                    [cls.widthStart]: !el.width,
-                    [cls.isLast]: ++index === columns.length,
+                    [cls.widthStart]: !col.width,
+                    [cls.isLast]: colIndex + 1 === columns.length,
                   })}
+                  data-row={rowIndex}
+                  data-col={col.key}
                 >
-                  <div className={cls.dynamicCell}>{el.render ? el.render(row) : row[el.key]}</div>
+                  <div className={cls.dynamicCell} data-row={rowIndex} data-col={col.key}>
+                    {row[col.key]?.render ? row[col.key].render(col, row) : row[col.key]?.value}
+                  </div>
                 </div>
               ))}
             </div>
