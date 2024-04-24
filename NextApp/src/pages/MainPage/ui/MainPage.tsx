@@ -23,11 +23,9 @@ function useState(defaultValue: any) {
   function getValue() {
     return value
   }
-
   function setValue(newValue: any) {
     value = newValue + value
   }
-
   return [getValue(), setValue] as const;
 }
 
