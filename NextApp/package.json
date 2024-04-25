@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -34,8 +34,5 @@
     "eslint-config-next": "14.0.2",
     "i18next-resources-for-ts": "^1.4.0",
     "typescript": "^5"
-  },
-  "browserslist": [
-    ">0.1%, defaults, supports es5"
-  ]
+  }
 }

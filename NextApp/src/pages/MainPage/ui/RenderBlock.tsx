@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+// @ts-nocheck
 import Clock from "react-clock";
-import { useEffect, useState } from "react";
+import { Component, useEffect, useState } from "react";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
@@ -58,28 +59,29 @@ const RenderImg = ({ element, resizable }: { element: ElementProperties; resizab
   );
 };
 
-const RenderWidgets = ({
-  element,
-  resizable,
-  timeZone,
-}: {
-  element: ElementProperties;
-  resizable?: boolean;
-  timeZone: string;
-}) => {
-  dayjs.extend(utc);
-  dayjs.extend(timezone);
-  const [value, setValue] = useState(dayjs.tz(dayjs().toISOString(), timeZone).toISOString());
-  useEffect(() => {
-    const interval = setInterval(() => setValue(dayjs.tz(dayjs().toISOString(), timeZone).toISOString()), 1000);
-
-    return () => {
-      clearInterval(interval);
+class RenderWidgets extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: new Date(),
     };
-  }, [timeZone]);
+  }
 
-  return <Clock value={new Date(value)} className={cls.clock} />;
-};
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({
+        value: new Date(),
+      });
+    }, 1000);
+  }
+
+  render() {
+    const val = this.state.value;
+    return (
+      <div>{`${new Date(this.state.value)}`}</div>
+    );
+  }
+}
 
 const renderImage = (col: any, row: any) => {
   return <img src={row[col.key].value} alt={row[col.key].value} className={cls.imgBlock} />;
@@ -137,7 +139,7 @@ const RenderBlock = (props: RenderBlockProps) => {
     ElementTable: <RenderTable resizable={resizable} element={element} />,
     ElementVideo: <RenderVideo resizable={resizable} element={element} />,
     ElementText: <RenderText resizable={resizable} element={element} />,
-    ElementClock: <RenderWidgets resizable={resizable} element={element} timeZone={timeZone} />,
+    ElementClock: <RenderWidgets />,
   };
 
   return (
