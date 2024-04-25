@@ -1,9 +1,9 @@
 import path from 'path';
-import { buildWebpack } from '@krap/config-files/dist/index';
+import { buildWebpack } from 'andreibread_config-files/dist/index';
 import {
   BuildMode, BuildPaths,
   TypeGlobalVars,
-} from '@krap/config-files/dist/webpack/types/config';
+} from 'andreibread_config-files/dist/webpack/types/config';
 import webpack from 'webpack';
 
 const Mode = process.env.NODE_ENV;
