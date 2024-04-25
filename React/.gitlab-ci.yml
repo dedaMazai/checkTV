@@ -1,0 +1,64 @@
+stages:
+  - build
+  - test
+  - deploy
+
+variables:
+  RELEASE_NAME: fids
+
+build:
+  tags:
+    - dpm_docker_group_runner
+  stage: build
+  image:
+    name: registry.svo.aero/dpm/airport_digital_ecosystem/aodb/infra:kaniko-executor-v1.19.0-debug
+    entrypoint: [""]
+  script:
+    - touch ./env/production/.env
+    - echo API_URL=$API_URL >> ./env/production/.env
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}"
+      --dockerfile "${CI_PROJECT_DIR}/Docker/Node/k8s.Dockerfile"
+      --destination "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG}"
+      --cache=true
+      --cache-ttl=8h
+  when: manual
+
+.deploy:
+  tags:
+    - dpm_shell_group_runner
+  stage: deploy
+  script:
+    - |
+      microk8s helm upgrade -i -n $NAMESPACE $RELEASE_NAME ./Helm \
+        --set "branch=$CI_COMMIT_REF_SLUG" \
+        --set "ci_job_id=$CI_JOB_ID"
+  when: manual
+
+deploy_develop:
+  extends: .deploy
+  variables:
+    NAMESPACE: develop-test-model-svo-aero
+  except:
+    - tags
+
+deploy_test:
+  extends: .deploy
+  variables:
+    NAMESPACE: test-test-model-svo-aero
+  except:
+    - tags
+
+deploy_develop_2:
+  extends: .deploy
+  variables:
+    NAMESPACE: develop-2-test-model-svo-aero
+  except:
+    - tags
+
+deploy_main:
+  extends: .deploy
+  variables:
+    NAMESPACE: develop-dev-svo-aero
+  only:
+    - tags

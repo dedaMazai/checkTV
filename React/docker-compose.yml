@@ -1,0 +1,13 @@
+services:
+  front_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+      - WS_URL=ws://10.96.183.101:8010
+      - API_URL=http://10.96.183.101:8009
+      - PORT=3005
+    ports:
+      - "3005:3005"
+    container_name: FIDS
+    restart: unless-stopped

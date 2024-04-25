@@ -1,1 +1,0 @@
-export { HorizontalCarousel } from './HorizontalCarousel';

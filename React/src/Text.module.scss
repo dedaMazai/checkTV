@@ -1,0 +1,23 @@
+.Text {
+  .text {
+    font-family: var(--font-family-text);
+  }
+
+  marquee {
+    user-select: none;
+  }
+
+  &.bold {
+    .text {
+      font-weight: 700;
+    }
+  }
+
+  &.wrap {
+    text-wrap: wrap;
+  }
+
+  .ellipsis {
+    text-overflow: ellipsis;
+  }
+}

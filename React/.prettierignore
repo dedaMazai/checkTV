@@ -1,7 +1,9 @@
 # Ignore artifacts:
-build
-coverage
-node_modules
-*.html
-*.css
-*.scss
+/cache
+/node_modules
+/build
+/.idea
+/.vscode
+/env/development/.env
+/env/production/.env
+package-lock.json

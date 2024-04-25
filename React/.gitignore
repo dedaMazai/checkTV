@@ -1,4 +1,19 @@
+/cache
+/node_modules
+/.idea
+/.vscode
 /build
-node_modules
-.idea
-*.pem
+/reports
+*.log
+*.tar
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+/env/development/.env
+/env/production/.env

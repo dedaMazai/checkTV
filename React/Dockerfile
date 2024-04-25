@@ -1,17 +1,25 @@
-FROM node
+FROM node:18.17.0
 
-WORKDIR /usr/src/app
+ARG API_URL
+ARG WS_URL
+ARG PORT
 
-COPY package*.json ./
+ENV PORT=$PORT
+ENV API_URL=$API_URL
+ENV WS_URL=$WS_URL
 
-RUN ["npm", "i"]
+WORKDIR /app
+EXPOSE $PORT
+
+COPY package-lock.json .
+COPY package.json .
+
+RUN npm config set strict-ssl false
+RUN npm install && npm install -g serve
 
 COPY . .
 
-EXPOSE 3000
+RUN npm run build
+COPY ./serve.json ./build/serve.json
 
-RUN ["npm", "run", "build"]
-
-RUN ["npm", "install", "-g", "serve"]
-
-CMD ["serve", "build"]
+CMD [ "serve", "./build"]

@@ -1,4 +1,5 @@
-# Browsers that we support
-last 1 version
-> 1%
-IE 10
+[production]
+> 0.000000000000000001%
+
+[development]
+> 0.000000000000000001%

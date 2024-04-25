@@ -1,0 +1,24 @@
+.ScreenBlockWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: max-content;
+  min-height: 100%;
+}
+
+.ScreenBlock {
+  position: relative;
+  overflow: hidden;
+}
+
+.RenderBlock {
+  width: inherit;
+  height: inherit;
+}
+
+.RenderBlockViewer {
+  position: absolute;
+  width: max-content;
+  height: max-content;
+}
