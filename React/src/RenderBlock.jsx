@@ -3,7 +3,7 @@
 /* eslint-disable semi */
 import React, { Component } from 'react';
 import { determinateText } from './helpers/text';
-import { Typography } from './Typography';
+import Typography from './Typography';
 import cls from './ScreenBlock.module.scss';
 
 export default class RenderBlock extends Component {

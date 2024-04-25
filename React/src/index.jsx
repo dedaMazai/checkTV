@@ -6,8 +6,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { getQueryParams } from './addQueryParams';
-import { RenderClock } from './RenderClock';
-import { RenderTimer } from './RenderTimer';
 import ViewerElement from './ViewerElement';
 import cls from './ScreenBlock.module.scss';
 
@@ -146,8 +144,6 @@ class App extends Component {
                 currentSlide={currentSlide}
               />
             ))}
-        <RenderTimer />
-        <RenderClock />
         <video
           controls
           src="https://geethakash.github.io/Oplayer/Nature.mp4"

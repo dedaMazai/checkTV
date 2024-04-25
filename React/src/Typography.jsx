@@ -1,55 +1,47 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-useless-constructor */
-import {
-  useEffect, useState,
-} from 'react';
+import React, { PureComponent } from 'react';
 import cls from './Text.module.scss';
 
-export const Typography = (props) => {
-  const {
-    className,
-    text,
-    align = 'left',
-    size = 32,
-    bold,
-    wrap,
-    ellipsis,
-    style,
-    marquee,
-  } = props;
+export default class Typography extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  const [value, setValue] = useState('');
+  render() {
+    const {
+      className,
+      text,
+      align = 'left',
+      size = 32,
+      bold,
+      wrap,
+      ellipsis,
+      style,
+      marquee,
+    } = this.props;
 
-  useEffect(() => {
-    setValue(text);
-  }, [text]);
+    const TextTag = marquee
+      ? 'marquee'
+      : 'p';
 
-  const TextTag = marquee
-    ? 'marquee'
-    : 'p';
-
-  return (
-    <div
-      className={`${cls.Text} ${bold
-        ? cls.bold
-        : ''} ${wrap
-        ? cls.wrap
-        : ''}`}
-    >
-      {value && (
-        <TextTag
-          className={`${cls.text} ${ellipsis
-            ? cls.ellipsis
-            : ''}`}
-          style={{
-            ...style,
-            textAlign: align,
-            fontSize: `${size}px`,
-          }}
-        >
-          {value}
-        </TextTag>
-      )}
-    </div>
-  );
-};
+    return (
+      <div
+        className={`${cls.Text} ${bold ? cls.bold : ''} ${wrap ? cls.wrap : ''}`}
+      >
+        {text && (
+          <TextTag
+            className={`${cls.text} ${ellipsis ? cls.ellipsis : ''}`}
+            style={{
+              ...style,
+              textAlign: align,
+              fontSize: `${size}px`,
+            }}
+          >
+            {text}
+          </TextTag>
+        )}
+      </div>
+    );
+  }
+}
